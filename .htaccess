@@ -1,0 +1,21 @@
+
+RewriteEngine on
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+
+# END WordPress
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP:X-Forwarded-SSL} !on
+#RewriteCond %{HTTP_HOST} ^jrose\.me$ [OR]
+#RewriteCond %{HTTP_HOST} ^www\.jrose\.me$
+#RewriteRule ^(.*)$ "https\:\/\/jrose\.me\/$1" [R=301,L]
+
+# New hopefully will redirect everything to root
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /demos/blog/index.php?path=$1 [NC,L,QSA]
+
+DirectoryIndex index.php
